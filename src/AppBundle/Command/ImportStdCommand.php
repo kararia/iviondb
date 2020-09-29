@@ -329,8 +329,6 @@ class ImportStdCommand extends ContainerAwareCommand
                 'keywords',
                 'text',
                 'cost',
-                'faction_cost',
-                'trash_cost',
             ]);
             if ($card) {
                 $result[] = $card;
@@ -623,11 +621,10 @@ class ImportStdCommand extends ContainerAwareCommand
         }
     }
 
-    protected function importEventData(Card $card, array $data)
+    protected function importSkillData(Card $card, array $data)
     {
         $mandatoryKeys = [
-            'cost',
-            'faction_cost',
+            'code'
         ];
 
         foreach ($mandatoryKeys as $key) {
