@@ -16,18 +16,18 @@
   <div class="form">
 
   <p>
-    Welcome on NetrunnerDB. Please log in to proceed. Your password will remain confidential.
+    Welcome on IvionDB. Please log in to proceed. Your password will remain confidential.
     </p>
       <form id="login" class="vertical" action="{{ path('oauth_server_auth_login_check') }}" method="post">
           {% if(error) %}
           <div class='form_error'>{{ error }}</div>
           {% endif %}
           <div class="form-group">
-              <label for="username">NetrunnerDB Username</label>
+              <label for="username">IvionDB Username</label>
               <p><input type="text" class="form-control" id="username" name="_username" /></p>
           </div>
           <div class="form-group">
-              <label for="password">NetrunnerDB Password</label>
+              <label for="password">IvionDB Password</label>
               <p><input type="password" class="form-control" id="password" name="_password" /></p>
           </div>
           <div>
