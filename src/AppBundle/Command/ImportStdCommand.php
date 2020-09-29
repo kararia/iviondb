@@ -342,7 +342,6 @@ class ImportStdCommand extends ContainerAwareCommand
     protected function importPrebuiltJsonFile(\SplFileInfo $fileinfo)
     {
         $result = [];
-
         foreach ($this->getDataFromFile($fileinfo) as $prebuiltData) {
             $prebuilt = $this->getEntityFromData('AppBundle\Entity\Prebuilt', $prebuiltData, [
                 'code',
@@ -596,31 +595,6 @@ class ImportStdCommand extends ContainerAwareCommand
         return $this->uniquelyEncodeJson($array1) === $this->uniquelyEncodeJson($array2);
     }
 
-    protected function importAgendaData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'advancement_cost',
-            'agenda_points',
-        ];
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
-    protected function importAssetData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'cost',
-            'faction_cost',
-            'trash_cost',
-        ];
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
     protected function importSkillData(Card $card, array $data)
     {
         $mandatoryKeys = [
@@ -632,97 +606,10 @@ class ImportStdCommand extends ContainerAwareCommand
         }
     }
 
-    protected function importHardwareData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'cost',
-            'faction_cost',
-        ];
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
-    protected function importICEData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'cost',
-            'faction_cost',
-            'strength',
-        ];
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
-    protected function importIdentityData(Card $card, array $data)
+    protected function importUltimateData(Card $card, array $data)
     {
         $mandatoryKeys = [
             'minimum_deck_size',
-        ];
-
-        if ($card->getPack()->getCode() !== 'draft') {
-            $mandatoryKeys[] = 'influence_limit';
-        }
-
-        if ($card->getSide()->getCode() === 'runner') {
-            $mandatoryKeys[] = 'base_link';
-        }
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
-    protected function importOperationData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'cost',
-            'faction_cost',
-        ];
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
-    protected function importProgramData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'cost',
-            'memory_cost',
-            'faction_cost',
-        ];
-
-        if (strstr($card->getKeywords(), 'Icebreaker') !== false) {
-            $mandatoryKeys[] = 'strength';
-        }
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
-    protected function importResourceData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'cost',
-            'faction_cost',
-        ];
-
-        foreach ($mandatoryKeys as $key) {
-            $this->copyKeyToEntity($card, 'AppBundle\Entity\Card', $data, $key, true);
-        }
-    }
-
-    protected function importUpgradeData(Card $card, array $data)
-    {
-        $mandatoryKeys = [
-            'cost',
-            'faction_cost',
-            'trash_cost',
         ];
 
         foreach ($mandatoryKeys as $key) {
