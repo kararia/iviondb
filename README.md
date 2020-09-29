@@ -29,7 +29,7 @@ The data used by IvionDB is at https://github.com/kararia/ivion-cards-json. If y
 
 ## How to add card images
 
-- Put the card images in `web/card_image/` (`web/card_image/01001.png`, etc.)
+- Put the card images in `web/card_image/` (`web/card_image/large/01001.png`, etc.)
 
 ## How to update
 
@@ -57,4 +57,4 @@ where `decklist_id` is the numeric id of the deck you want to highlight.
 ## Add or edit cards
 
 - update the json data
-- run `php bin/console app:import:json path_to_json_repository`
+- run `php bin/console app:import:std path_to_json_repository`
